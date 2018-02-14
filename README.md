@@ -1,6 +1,6 @@
 # UnrealAStar
 
-sdfsdf
+sample use unreal astar
 
-sdf
+#include "Runtime/AIModule/Public/GraphAStar.h"
 
