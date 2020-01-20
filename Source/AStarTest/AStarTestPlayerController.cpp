@@ -1,7 +1,7 @@
 // Copyright 1998-2017 Epic Games, Inc. All Rights Reserved.
 
 #include "AStarTestPlayerController.h"
-#include "AI/Navigation/NavigationSystem.h"
+//#include "AI/Navigation/NavigationSystem.h"
 #include "Runtime/Engine/Classes/Components/DecalComponent.h"
 #include "HeadMountedDisplayFunctionLibrary.h"
 #include "AStarTestCharacter.h"
@@ -18,7 +18,7 @@ void AAStarTestPlayerController::PlayerTick(float DeltaTime)
 
 	// keep updating the destination every tick while desired
 	if (bMoveToMouseCursor)
-	{
+	{ 
 		MoveToMouseCursor();
 	}
 }
@@ -51,11 +51,11 @@ void AAStarTestPlayerController::MoveToMouseCursor()
 		{
 			if (MyPawn->GetCursorToWorld())
 			{
-				UNavigationSystem::SimpleMoveToLocation(this, MyPawn->GetCursorToWorld()->GetComponentLocation());
+//				UNavigationSystem::SimpleMoveToLocation(this, MyPawn->GetCursorToWorld()->GetComponentLocation());
 			}
 		}
-	}
-	else
+	} 
+	else 
 	{
 		// Trace to see what is under the mouse cursor
 		FHitResult Hit;
@@ -64,6 +64,7 @@ void AAStarTestPlayerController::MoveToMouseCursor()
 		if (Hit.bBlockingHit)
 		{
 			// We hit something, move there
+			//
 			SetNewMoveDestination(Hit.ImpactPoint);
 		}
 	}
@@ -88,7 +89,7 @@ void AAStarTestPlayerController::SetNewMoveDestination(const FVector DestLocatio
 	APawn* const MyPawn = GetPawn();
 	if (MyPawn)
 	{
-		UNavigationSystem* const NavSys = GetWorld()->GetNavigationSystem();
+		//UNavigationSystem* const NavSys = GetWorld()->GetNavigationSystem();
 		float const Distance = FVector::Dist(DestLocation, MyPawn->GetActorLocation());
 
 		auto start = MyPawn->GetActorLocation();
@@ -114,7 +115,7 @@ void AAStarTestPlayerController::SetNewMoveDestination(const FVector DestLocatio
 		//	NavSys->SimpleMoveToLocation(this, DestLocation);
 		//}
 	}
-}
+} 
 
 void AAStarTestPlayerController::OnSetDestinationPressed()
 {

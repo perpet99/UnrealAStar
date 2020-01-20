@@ -59,7 +59,8 @@ AAStarTestCharacter::AAStarTestCharacter()
 void AAStarTestCharacter::Tick(float DeltaSeconds)
 {
     Super::Tick(DeltaSeconds);
-
+	//UE_LOG(LogTemp, Log, TEXT("NickNameWidget CreateCharacter "))
+	//DeltaSeconds += 0.1;
 	if (CursorToWorld != nullptr)
 	{
 		if (UHeadMountedDisplayFunctionLibrary::IsHeadMountedDisplayEnabled())
@@ -74,7 +75,7 @@ void AAStarTestCharacter::Tick(float DeltaSeconds)
 				World->LineTraceSingleByChannel(HitResult, StartLocation, EndLocation, ECC_Visibility, Params);
 				FQuat SurfaceRotation = HitResult.ImpactNormal.ToOrientationRotator().Quaternion();
 				CursorToWorld->SetWorldLocationAndRotation(HitResult.Location, SurfaceRotation);
-			}
+			} 
 		}
 		else if (APlayerController* PC = Cast<APlayerController>(GetController()))
 		{
